@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Cyber CMS</title>
+        <meta name="viewport" content="width=400px, maximum-scale=1.0">
+        <link rel="stylesheet" href="Qubit.css">
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet"> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <nav>
+            </nav>
+        </header>
+        <main>
+            <section id="review">
+            
+            </section>
+        </main>
+        <footer>
+        
+        </footer>
+    </body>
+    <script>
+        const REV_ARTIST = 1;
+        const REV_TITLE  = 2;
+        const REV_GENRE  = 3;
+        const REV_RELEASE_DATE = 4;
+        const REV_WEBSITE = 5;
+        const REV_CONTENT = 6;
+        const REV_DATE = 7;
+        
+        
+        var ajaxRequest;
+        
+        ajaxRequest = $.ajax (
+        {
+            url: "get-review.php",
+            type: "get"
+        })
+        
+        ajaxRequest.done(function(json) {
+            var obj = JSON.parse(json);
+            
+            $('#review').append("<h1>" + obj[0][1] + "</h1>");
+            $('#review').append("<h2>" + obj[0][2] + "</h2>");
+            $('#review').append("<h4>" + obj[0][REV_DATE] + "</h4>");
+            $('#review').append("<hr>");
+            $('#review').append("<p>" + obj[0][REV_CONTENT] + "</p>");
+        });
+        
+        ajaxRequest.fail(function(response) {
+            alert(response.responseText);
+        });
+        
+    </script>
+</html>

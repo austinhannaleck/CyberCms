@@ -1,0 +1,241 @@
+body
+{
+    font-family: 'Play', sans-serif;
+    background-color: rgb(20,20,20);
+    color: white;
+}
+
+nav {
+    color: white;
+    background-color: rgb(10, 10, 10);
+    width: 100%;
+}
+
+nav h2 {
+    display: inline-block; 
+    padding: 10px 20px;
+}
+
+nav h2:hover {
+    background-color: rgb(15, 15, 15);
+    cursor: pointer;
+}
+
+nav h2:not(:first-child) {
+}
+
+nav h2:last-child {
+    float: right;
+}
+
+/* This class greys out the background to make the modal more apparent*/
+.modal
+{
+    display: block;
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    padding-top: 10px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* This is the login service modal */
+.login-modal
+{
+    display: none;
+    position: relative;
+    color: white;
+    margin: auto;
+    width: 30%;
+    animation-name: modalAppear;
+    animation-duration: 0.4s;
+    text-align: center;
+    border: 2px solid rgb(20,20,20);
+}
+
+/* This is the manage users service modal */
+
+.manage-users-header, .manage-reviews-header{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.manage-users-main, .manage-reviews-main
+{
+    padding: 20px;
+    text-align: center;
+}
+
+.manage-users-main h3 {
+    margin-bottom: 10px;
+}
+
+.manage-users-main input[type="submit"] {
+    margin-top: 20px;
+}
+
+.manage-users-main input[type="submit"]:hover {
+    background-color: rgb(50,50,50);
+}
+
+.manage-reviews-main input[type="submit"]
+{
+    margin-top: 20px;
+    width: 30%;
+    font-size: 1.5em;
+}
+
+#add-user-form h2 {
+    margin-bottom: 5px;
+}
+
+input[type="submit"]:hover{
+    cursor: pointer;
+}
+
+.manage-reviews-modal
+{
+    position: relative;
+    margin: auto;
+    width: 80%;
+    background-color: rgb(50,50,50);
+    color: white;
+}
+
+@media only screen and (max-width: 750px)
+{
+    .login-modal
+    {
+        width: 90%;
+    }
+}
+
+/* Animation for modal */
+
+@keyframes modalAppear
+{
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+.login-block, .login-header
+{
+    background-color: rgb(50,50,50);
+    padding: 10px 50px 30px 50px;
+    color: white;
+}
+
+.login-block
+{ 
+    padding-top: 10px;
+}
+
+.login-block input
+{
+    margin: 15px auto;
+}
+
+.login-header
+{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgb(40,40,40);
+    text-align: center;
+}
+
+input
+{
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    font-size: 1em;
+    background-color: rgb(40,40,40);
+    border: 2px solid rgb(35,35,35);
+    color: white;
+    text-align: center;
+}
+
+textarea
+{
+    width: 80%;
+    height: 300px;
+    padding: 5px 10px;
+    font-size: 1em;
+    background-color: rgb(40,40,40);
+    border: 2px solid rgb(35,35,35);
+    color: white;
+}
+
+.login-block h3
+{
+    margin-bottom: 8px;
+}
+
+.login-block input[type="text"], .login-block input[type="password"]
+{
+    padding: 5px 10px;
+    font-size: 1em;
+    background-color: rgb(40,40,40);
+    border: 2px solid rgb(35,35,35);
+    color: white;
+}
+
+.login-block input[type="submit"]
+{
+    font-size: 0.9em;
+    color: white;
+    background-color: rgb(223, 51, 51);
+    border: none;
+    margin-top: 30px;
+    padding: 10px 20px;
+    transition: 0.3s ease-in-out;
+}
+
+.login-block input[type="submit"]:hover
+{
+    background-color: rgb(203,31,31);
+    cursor: pointer;
+    
+}
+
+.admin-panel
+{
+    padding: 10px 200px;
+    margin: auto;
+}
+
+.panel-block
+{
+    text-align: center;
+    color: white;
+}
+
+.panel-item
+{
+    padding: 20px;
+    background-color: rgb(203, 31, 31);
+    position: relative;
+    transition: all 1s ease-in-out;
+}
+
+.panel-item:hover
+{
+    cursor: pointer;
+    background-color: rgb(223, 51, 51);
+    top: -10px;
+}
+
+.panel-img
+{
+    max-width: 100%;
+    width: 250px;
+    height: 250px;
+    background-color: rgb(183, 1, 1);
+    margin: 20px auto 20px auto;
+}
