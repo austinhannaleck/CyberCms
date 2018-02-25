@@ -19,13 +19,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     }
     
     // Prepare statement and bind to variables
-    if(!($conn->prepare("SELECT Pword FROM user WHERE Username = ?;")))
+    if(!($conn->prepare("SELECT user_password FROM user WHERE user_name = ?")))
     {
-        die("Error preparing SQL statement");
+        http_response_code(400);
+        die("Error preparing SQL statement: " . $conn->error);
+        
     }
     else
     {
-        $stmt = $conn->prepare("SELECT Pword FROM user WHERE Username = ?;");
+        $stmt = $conn->prepare("SELECT user_password FROM user WHERE user_name = ?");
     }
     
     $stmt->bind_param("s", $username);

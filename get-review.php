@@ -19,14 +19,14 @@ if($_SERVER["REQUEST_METHOD"] == "GET")
     }
     
     // Prepare statement and bind to variables
-    if(!($conn->prepare("SELECT * FROM review WHERE review_artist='Bon Jovi'")))
+    if(!($conn->prepare("SELECT * FROM review WHERE review_artist='Something'")))
     {
         http_response_code(400);
         die("Error preparing SQL statement");
     }
     else
     {
-        $stmt = $conn->prepare("SELECT * FROM review WHERE review_artist='Bon Jovi'");
+        $stmt = $conn->prepare("SELECT * FROM review WHERE review_artist='Something'");
     }
     
     $stmt->execute();
@@ -34,13 +34,13 @@ if($_SERVER["REQUEST_METHOD"] == "GET")
     
     if($stmt->bind_result($col1, $col2, $col3,
                          $col4, $col5, $col6,
-                         $col7, $col8, $col9))
+                         $col7, $col8, $col9, $col10, $col11))
     {   
         while($stmt->fetch())
         {
             $output[] = array($col1, $col2, $col3,
                          $col4, $col5, $col6,
-                         $col7, $col8, $col9);
+                         $col7, $col8, $col9, $col10, $col11);
         }
     }
     else

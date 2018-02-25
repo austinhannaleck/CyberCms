@@ -19,23 +19,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     }
     
     // Prepare statement and bind to variables
-    if(!($conn->prepare("INSERT INTO review (review_artist, review_title, review_genre, review_released_date, review_artist_website, review_content, review_date) VALUES (?, ?, ?, ?, ?, ?, ?);")))
+    if(!($conn->prepare("INSERT INTO review (review_artist, review_title, review_genre, review_released_date, review_artist_website, review_content, review_date, review_embed, review_img_path) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);")))
     {
         http_response_code(400);
         die("Error preparing SQL statement");
     }
     else
     {
-        $stmt = $conn->prepare("INSERT INTO review (review_artist, review_title, review_genre, review_released_date, review_artist_website, review_content, review_date) VALUES (?, ?, ?, ?, ?, ?, ?);");
+        $stmt = $conn->prepare("INSERT INTO review (review_artist, review_title, review_genre, review_released_date, review_artist_website, review_content, review_date, review_embed, review_img_path) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);");
     }
     
-    $stmt->bind_param("sssssss", $artist,
-                                 $title,
-                                 $genre,
-                                 $rel_date,
-                                 $website,
-                                 $content,
-                                 $rev_date);
+    $stmt->bind_param("sssssssss", $artist,
+                                   $title,
+                                   $genre,
+                                   $rel_date,
+                                   $website,
+                                   $content,
+                                   $rev_date,
+                                   $embed,
+                                   $img_path);
     
     // Set parameters and execute statement
     $artist   = $_POST['artist'];
@@ -45,6 +47,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $website  = $_POST['artist-website'];
     $content  = $_POST['content'];
     $rev_date = date("Y-m-d");
+    $embed    = $_POST['embed'];
+    $img_path = $_POST['image_path'];
     
     $stmt->execute();
     

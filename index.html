@@ -18,24 +18,6 @@
             </nav>
         </header>
         <main>
-            <!--
-            <div id="loginModal" class="modal col-12">
-                <section class="login-modal">
-                    <section class="login-header">
-                        <h1>Login</h1>
-                    </section>
-                    <section class="login-block">
-                        <form action="login.php" method="post" id="login-form">
-                            <h3>Username</h3>
-                            <input type="text" name="username" required>
-                            <h3>Password</h3>
-                            <input type="password" name="password" required>
-                            <input type="submit" value="Login">
-                        </form>
-                    </section>            
-                </section>
-            </div>
-            -->
             <section id="content" class="tab row">
                 <div class="manage-reviews-header row">
                     <h1>Manage Reviews</h1>
@@ -43,8 +25,11 @@
                 <div class="manage-reviews-main row">
                     <h2>Add Review</h2>
                     <form action="add-review.php" method="post" id="add-review-form">
+                        <div class="col-6">
                         <h3>Artist name</h3>
                         <input type="text" name="artist" required>
+                        <h3>Album Artwork</h3>
+                        <input type="text" name="image_path" required>
                         <h3>Album Title</h3>
                         <input type="text" name="title" required>
                         <h3>Album Genre</h3>
@@ -53,9 +38,14 @@
                         <input type="date" name="release-date" required>
                         <h3>Artist Website</h3>
                         <input type="text" name="artist-website" required>
-                        <h3>Review Content</h3>
-                        <textarea name="content" placeholder="Review content here..." required></textarea>
-                        <input type="submit" value="Add User">
+                        <h3>Embedded Content Link</h3>
+                        <input type="text" name="embed">
+                        </div>
+                        <div class="col-6">
+                            <h3>Review Content</h3>
+                            <textarea name="content" placeholder="Review content here..." required></textarea>
+                        </div>
+                        <input type="submit" value="Add Review">
                     </form>
                 </div>
             </section>            
@@ -77,20 +67,35 @@
                     </form>
                 </div>
             </section>
+            <div class="modal">
+                <section id="login-modal">
+                    <section class="login-header">
+                        <h1>Login</h1>
+                    </section>
+                    <section class="login-block">
+                        <form action="login.php" method="post" id="login-form">
+                            <h3>Username</h3>
+                            <input type="text" name="username" required>
+                            <h3>Password</h3>
+                            <input type="password" name="password" required>
+                            <input type="submit" value="Login">
+                        </form>
+                    </section>            
+                </section>
+             </div>
         </main>
         <footer>
         
         </footer>
     </body>
     <script>
-        $('.nav-button').on('click', function() {
-            var id = $(this).data("tabname")
-            alert(id);
-            openTab(id);
-        });
         
+        // Load Manage Content tab upon start
+        $(document).ready(function() {
+            load('content');
+        })
         
-        function openTab(tabName) {
+        function load(tabName) {
             var x = document.getElementsByClassName("tab");
             for(var j = 0; j < x.length; j++) {
                 x[j].style.display = "none";
@@ -118,7 +123,8 @@
             ajaxRequest.done(function(response)
             {
                 alert("Hello " + response);
-                $('#loginModal').css({visibility: "hidden"});
+                //$('#login-modal').css({visibility: "hidden"});
+                $('#login-modal').hide();
             });
             
             ajaxRequest.fail(function(response)
@@ -126,10 +132,51 @@
                 alert(response.responseText);
             });
         });
+        
+        $('.nav-button').on('click', function() {
+            var id = $(this).data("tabname")
+            openTab(id);
+        });
+        
+        
+        function openTab(tabName) {
+            var x = document.getElementsByClassName("tab");
+            for(var j = 0; j < x.length; j++) {
+                x[j].style.display = "none";
+            }
+            
+            document.getElementById(tabName).style.display = "block";
+        }
                
         /******************************************
         / Manage users modal event handler
         /*****************************************/
+        $("#add-user-form").submit(function(event)
+        {
+            event.preventDefault();
+            var ajaxRequest;
+            var values = $(this).serialize();
+            
+            ajaxRequest = $.ajax(
+            {
+                url: $(this).attr('action'),
+                type: "post",
+                data: values
+            });
+            
+            ajaxRequest.done(function(response)
+            {
+                alert(response);
+            });
+            
+            ajaxRequest.fail(function(response)
+            {
+                alert(response.responseText);
+            });
+            
+        });
+        
+        
         $("#add-review-form").submit(function(event)
         {
             event.preventDefault();

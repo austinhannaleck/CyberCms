@@ -29,9 +29,10 @@ nav h2:last-child {
 }
 
 /* This class greys out the background to make the modal more apparent*/
-.modal
-{
-    display: block;
+.modal{
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
     position: fixed;
     z-index: 1; /* Sit on top */
     padding-top: 10px; /* Location of the box */
@@ -44,14 +45,26 @@ nav h2:last-child {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* This is the login service modal */
-.login-modal
-{
+.tab-active {
+    display: block;
+}
+
+.tab-inactive {
     display: none;
+}
+
+
+
+.tab-not
+
+/* This is the login service modal */
+#login-modal
+{
+    display:block;
     position: relative;
     color: white;
     margin: auto;
-    width: 30%;
+    width: 80%;
     animation-name: modalAppear;
     animation-duration: 0.4s;
     text-align: center;
@@ -90,6 +103,13 @@ nav h2:last-child {
     font-size: 1.5em;
 }
 
+#add-review-form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: left;
+}
+
 #add-user-form h2 {
     margin-bottom: 5px;
 }
@@ -109,7 +129,7 @@ input[type="submit"]:hover{
 
 @media only screen and (max-width: 750px)
 {
-    .login-modal
+    #login-modal
     {
         width: 90%;
     }
@@ -163,8 +183,6 @@ input
 
 textarea
 {
-    width: 80%;
-    height: 300px;
     padding: 5px 10px;
     font-size: 1em;
     background-color: rgb(40,40,40);

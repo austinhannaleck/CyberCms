@@ -19,14 +19,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     }
     
     // Prepare statement and bind to variables
-    if(!($conn->prepare("SELECT * FROM user WHERE user_name = ?;")))
+    if(!($conn->prepare("SELECT * FROM user WHERE user_name = ?")))
     {
         http_response_code(400);
         die("Error preparing SQL statement");
     }
     else
     {
-        $stmt = $conn->prepare("SELECT * FROM user WHERE user_name = ?;");
+        $stmt = $conn->prepare("SELECT * FROM user WHERE user_name = ?");
     }
     
     $stmt->bind_param("s", $username);
@@ -47,7 +47,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         $stmt->execute();
         
         // If user name exists, end script and notify user
-        if($stmt->num_rows > 0)
+        if($stmt->get_result()->num_rows > 0)
         {
             http_response_code(400);
             die("Username already taken - please choose another.");
@@ -68,6 +68,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                 $stmt = $conn->prepare("INSERT INTO user (user_name, user_password, user_author) VALUES (?, ?, ?);");
                 
                 $stmt->bind_param("sss", $username, $password, $author);
+                $password       = password_hash($_POST['password'], PASSWORD_DEFAULT);
                 if($stmt->execute() == false)
                 {
                     die("Failed to add username to database");
