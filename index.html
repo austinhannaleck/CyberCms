@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=400px, maximum-scale=1.0">
         <link rel="stylesheet" href="Qubit.css">
         <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="css/add-review.css">
         <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet"> 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
@@ -20,32 +21,34 @@
         <main>
             <section id="content" class="tab row">
                 <div class="manage-reviews-header row">
-                    <h1>Manage Reviews</h1>
+                    <h1>Manage Content</h1>
                 </div>
                 <div class="manage-reviews-main row">
                     <h2>Add Review</h2>
                     <form action="add-review.php" method="post" id="add-review-form">
-                        <div class="col-6">
-                        <h3>Artist name</h3>
-                        <input type="text" name="artist" required>
-                        <h3>Album Artwork</h3>
-                        <input type="text" name="image_path" required>
-                        <h3>Album Title</h3>
-                        <input type="text" name="title" required>
-                        <h3>Album Genre</h3>
-                        <input type="text" name="genre" required>
-                        <h3>Release Date</h3>
-                        <input type="date" name="release-date" required>
-                        <h3>Artist Website</h3>
-                        <input type="text" name="artist-website" required>
-                        <h3>Embedded Content Link</h3>
-                        <input type="text" name="embed">
+                        <div class="col-3">
+                            <h3>Artist name</h3>
+                            <input type="text" name="artist" required>
+                            <h3>Album Artwork</h3>
+                            <input type="text" name="image_path" required>
+                            <h3>Album Title</h3>
+                            <input type="text" name="title" required>
+                            <h3>Album Genre</h3>
+                            <input type="text" name="genre" required>
+                            <h3>Release Date</h3>
+                            <input type="date" name="release-date" required>
+                            <h3>Artist Website</h3>
+                            <input type="text" name="artist-website" required>
+                            <h3>Embedded Content Link</h3>
+                            <input type="text" name="embed">
                         </div>
-                        <div class="col-6">
+                        <div class="col-9">
                             <h3>Review Content</h3>
                             <textarea name="content" placeholder="Review content here..." required></textarea>
                         </div>
-                        <input type="submit" value="Add Review">
+                        <div class="row col-12">
+                            <input type="submit" value="Add Review">
+                        </div>
                     </form>
                 </div>
             </section>            

@@ -1,0 +1,58 @@
+#add-review-form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: left;
+    background-color: rgb(10,10,10);
+}
+
+.manage-reviews-header {
+    padding: 10px;
+}
+
+.manage-reviews-main input{
+    margin: 10px 0 0 0;
+}
+
+.manage-reviews-main h2 {
+    text-align: left;
+    background-color: rgb(5,5,5);
+    padding: 10px 20px;
+}
+
+.manage-reviews-main input[type="submit"] {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-size: 1.2em;
+}
+
+.manage-reviews-main input[type="submit"]:hover {
+   background-color: rgb(50,50,50);
+}
+
+.manage
+.manage-reviews-main input[type="submit"]
+{
+    margin-top: 20px;
+    width: 30%;
+    font-size: 1.5em;
+}
+
+.manage-reviews-header{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.manage-reviews-main
+{
+    padding: 20px;
+    text-align: center;
+}
+
+.manage-reviews-main textarea {
+    width: 100%;
+    height: 95%;
+    margin: 10px 0 0 0;
+}

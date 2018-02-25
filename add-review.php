@@ -46,7 +46,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $rel_date = $_POST['release-date']; // Date of album release
     $website  = $_POST['artist-website'];
     $content  = $_POST['content'];
-    $rev_date = date("Y-m-d");
+    $rev_date = date('Y-m-d');
     $embed    = $_POST['embed'];
     $img_path = $_POST['image_path'];
     

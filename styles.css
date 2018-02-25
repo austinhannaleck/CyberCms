@@ -30,7 +30,7 @@ nav h2:last-child {
 
 /* This class greys out the background to make the modal more apparent*/
 .modal{
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: space-around;
     position: fixed;
@@ -45,18 +45,6 @@ nav h2:last-child {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-.tab-active {
-    display: block;
-}
-
-.tab-inactive {
-    display: none;
-}
-
-
-
-.tab-not
-
 /* This is the login service modal */
 #login-modal
 {
@@ -64,7 +52,7 @@ nav h2:last-child {
     position: relative;
     color: white;
     margin: auto;
-    width: 80%;
+    width: 50%;
     animation-name: modalAppear;
     animation-duration: 0.4s;
     text-align: center;
@@ -73,12 +61,12 @@ nav h2:last-child {
 
 /* This is the manage users service modal */
 
-.manage-users-header, .manage-reviews-header{
+.manage-users-header {
     text-align: center;
     margin-bottom: 10px;
 }
 
-.manage-users-main, .manage-reviews-main
+.manage-users-main
 {
     padding: 20px;
     text-align: center;
@@ -96,19 +84,7 @@ nav h2:last-child {
     background-color: rgb(50,50,50);
 }
 
-.manage-reviews-main input[type="submit"]
-{
-    margin-top: 20px;
-    width: 30%;
-    font-size: 1.5em;
-}
 
-#add-review-form {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    text-align: left;
-}
 
 #add-user-form h2 {
     margin-bottom: 5px;
@@ -116,15 +92,6 @@ nav h2:last-child {
 
 input[type="submit"]:hover{
     cursor: pointer;
-}
-
-.manage-reviews-modal
-{
-    position: relative;
-    margin: auto;
-    width: 80%;
-    background-color: rgb(50,50,50);
-    color: white;
 }
 
 @media only screen and (max-width: 750px)
@@ -184,7 +151,7 @@ input
 textarea
 {
     padding: 5px 10px;
-    font-size: 1em;
+    font-size: 1.2em;
     background-color: rgb(40,40,40);
     border: 2px solid rgb(35,35,35);
     color: white;
