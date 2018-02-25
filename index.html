@@ -123,8 +123,8 @@
             ajaxRequest.done(function(response)
             {
                 alert("Hello " + response);
-                //$('#login-modal').css({visibility: "hidden"});
-                $('#login-modal').hide();
+                $('#login-modal').hide(); 
+                $('#login-modal').parent().hide(); // hide modal parent element
             });
             
             ajaxRequest.fail(function(response)

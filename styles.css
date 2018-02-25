@@ -30,7 +30,7 @@ nav h2:last-child {
 
 /* This class greys out the background to make the modal more apparent*/
 .modal{
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: space-around;
     position: fixed;

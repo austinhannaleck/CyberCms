@@ -48,14 +48,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         // Bind result to variable
         $stmt->bind_result($db_pass);
         
-        $password_to_compare = null;
+        $stored_password = null;
         
         while($stmt->fetch())
         {
-            $password_to_compare =  $db_pass;
+            $stored_password =  $db_pass;
         }
         
-        if($password_to_compare == $password)
+        if(password_verify($password, $stored_password))
         {
             echo $username;
             exit();
