@@ -1,9 +1,11 @@
 <?php
 
-$dbServerName = 'localhost';
-$dbUsername   = 'root';
-$dbPassword   = '';
-$dbName       = 'cms_test';
+$configs = include('config/configs.php');
+
+$dbServerName = $configs['host'];
+$dbUsername   = $configs['username'];
+$dbPassword   = $configs['password'];
+$dbName       = $configs['database'];
 
 if($_SERVER["REQUEST_METHOD"] == "GET")
 {
@@ -19,14 +21,14 @@ if($_SERVER["REQUEST_METHOD"] == "GET")
     }
     
     // Prepare statement and bind to variables
-    if(!($conn->prepare("SELECT * FROM review WHERE review_artist='Something'")))
+    if(!($conn->prepare("SELECT * FROM review WHERE review_artist='Bon jovi'")))
     {
         http_response_code(400);
         die("Error preparing SQL statement");
     }
     else
     {
-        $stmt = $conn->prepare("SELECT * FROM review WHERE review_artist='Something'");
+        $stmt = $conn->prepare("SELECT * FROM review WHERE review_artist='Bon jovi'");
     }
     
     $stmt->execute();
@@ -34,13 +36,13 @@ if($_SERVER["REQUEST_METHOD"] == "GET")
     
     if($stmt->bind_result($col1, $col2, $col3,
                          $col4, $col5, $col6,
-                         $col7, $col8, $col9, $col10, $col11))
+                         $col7, $col8, $col9, $col10, $col11, $col12))
     {   
         while($stmt->fetch())
         {
             $output[] = array($col1, $col2, $col3,
                          $col4, $col5, $col6,
-                         $col7, $col8, $col9, $col10, $col11);
+                         $col7, $col8, $col9, $col10, $col11, $col12);
         }
     }
     else

@@ -5,32 +5,9 @@ body
     color: white;
 }
 
-nav {
-    color: white;
-    background-color: rgb(10, 10, 10);
-    width: 100%;
-}
-
-nav h2 {
-    display: inline-block; 
-    padding: 10px 20px;
-}
-
-nav h2:hover {
-    background-color: rgb(15, 15, 15);
-    cursor: pointer;
-}
-
-nav h2:not(:first-child) {
-}
-
-nav h2:last-child {
-    float: right;
-}
-
 /* This class greys out the background to make the modal more apparent*/
 .modal{
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: space-around;
     position: fixed;
@@ -223,4 +200,13 @@ textarea
     height: 250px;
     background-color: rgb(183, 1, 1);
     margin: 20px auto 20px auto;
+}
+
+#tracks {
+    width: 100%;
+    text-align: left;
+}
+
+#form-div {
+    display: flex;
 }

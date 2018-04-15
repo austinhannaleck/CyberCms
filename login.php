@@ -1,9 +1,11 @@
 <?php
 
-$dbServerName = 'localhost';
-$dbUsername   = 'root';
-$dbPassword   = '';
-$dbName       = 'cms_test';
+$configs = include('config/configs.php');
+
+$dbServerName = $configs['host'];
+$dbUsername   = $configs['username'];
+$dbPassword   = $configs['password'];
+$dbName       = $configs['database'];
 
 // Only process post requests
 if($_SERVER['REQUEST_METHOD'] == 'POST')

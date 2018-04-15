@@ -1,9 +1,12 @@
 <?php
 
-$dbServerName = 'localhost';
-$dbUsername   = 'root';
-$dbPassword   = '';
-$dbName       = 'cms_test';
+$configs = include('config/configs.php');
+
+$dbServerName = $configs['host'];
+$dbUsername   = $configs['username'];
+$dbPassword   = $configs['password'];
+$dbName       = $configs['database'];
+ini_set('display_errors', 1);
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
@@ -58,7 +61,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             $stmt->close();
             
             // Prepare statement and bind to variables
-            if(!($conn->prepare("INSERT INTO user (user_name, user_password) VALUES (?, ?);")))
+            if(!($conn->prepare("INSERT INTO user (user_name, user_password, user_author) VALUES (?, ?, ?);")))
             {
                 http_response_code(400);
                 die("Error preparing INSERT SQL statement");

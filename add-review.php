@@ -1,9 +1,11 @@
 <?php
 
-$dbServerName = 'localhost';
-$dbUsername   = 'root';
-$dbPassword   = '';
-$dbName       = 'cms_test';
+$configs = include('config/configs.php');
+
+$dbServerName = $configs['host'];
+$dbUsername   = $configs['username'];
+$dbPassword   = $configs['password'];
+$dbName       = $configs['database'];
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
@@ -19,17 +21,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     }
     
     // Prepare statement and bind to variables
-    if(!($conn->prepare("INSERT INTO review (review_artist, review_title, review_genre, review_released_date, review_artist_website, review_content, review_date, review_embed, review_img_path) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);")))
+    if(!($conn->prepare("INSERT INTO review (review_artist, review_title, review_genre, review_released_date, review_artist_website, review_content, review_date, review_embed, review_img_path, review_tracks) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);")))
     {
         http_response_code(400);
         die("Error preparing SQL statement");
     }
     else
     {
-        $stmt = $conn->prepare("INSERT INTO review (review_artist, review_title, review_genre, review_released_date, review_artist_website, review_content, review_date, review_embed, review_img_path) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);");
+        $stmt = $conn->prepare("INSERT INTO review (review_artist, review_title, review_genre, review_released_date, review_artist_website, review_content, review_date, review_embed, review_img_path, review_tracks) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
     }
     
-    $stmt->bind_param("sssssssss", $artist,
+    $stmt->bind_param("ssssssssss", $artist,
                                    $title,
                                    $genre,
                                    $rel_date,
@@ -37,7 +39,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                                    $content,
                                    $rev_date,
                                    $embed,
-                                   $img_path);
+                                   $img_path,
+                                   $tracks);
     
     // Set parameters and execute statement
     $artist   = $_POST['artist'];
@@ -49,8 +52,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $rev_date = date('Y-m-d');
     $embed    = $_POST['embed'];
     $img_path = $_POST['image_path'];
+    $tracks   = $_POST['tracks'];
     
-    $stmt->execute();
+    if($stmt->execute() == false) {
+        die("Statement execution failed " . $stmt->error);
+    };
     
     if($stmt->close())
     {

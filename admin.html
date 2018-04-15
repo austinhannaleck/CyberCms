@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -26,25 +26,29 @@
                 <div class="manage-reviews-main row">
                     <h2>Add Review</h2>
                     <form action="add-review.php" method="post" id="add-review-form">
-                        <div class="col-3">
-                            <h3>Artist name</h3>
-                            <input type="text" name="artist" required>
-                            <h3>Album Artwork</h3>
-                            <input type="text" name="image_path" required>
-                            <h3>Album Title</h3>
-                            <input type="text" name="title" required>
-                            <h3>Album Genre</h3>
-                            <input type="text" name="genre" required>
-                            <h3>Release Date</h3>
-                            <input type="date" name="release-date" required>
-                            <h3>Artist Website</h3>
-                            <input type="text" name="artist-website" required>
-                            <h3>Embedded Content Link</h3>
-                            <input type="text" name="embed">
-                        </div>
-                        <div class="col-9">
-                            <h3>Review Content</h3>
-                            <textarea name="content" placeholder="Review content here..." required></textarea>
+                        <div class="row" id="form-div">
+                            <div class="col-3">
+                                <h3>Artist name</h3>
+                                <input type="text" name="artist" required>
+                                <h3>Album Artwork</h3>
+                                <input type="text" name="image_path" required>
+                                <h3>Album Title</h3>
+                                <input type="text" name="title" required>
+                                <h3>Album Genre</h3>
+                                <input type="text" name="genre" required>
+                                <h3>Release Date</h3>
+                                <input type="date" name="release-date" required>
+                                <h3>Artist Website</h3>
+                                <input type="text" name="artist-website" required>
+                                <h3>Embedded Content Link</h3>
+                                <input type="text" name="embed">
+                            </div>
+                            <div class="col-9">
+                                <h3>Tracklist (separate by commas)</h3>
+                                <input id="tracks" type="text" name="tracks">
+                                <h3>Review Content</h3>
+                                <textarea name="content" placeholder="Review content here..." required></textarea>
+                            </div>
                         </div>
                         <div class="row col-12">
                             <input type="submit" value="Add Review">

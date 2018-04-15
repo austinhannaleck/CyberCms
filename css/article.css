@@ -1,0 +1,123 @@
+body {
+    background-color: white;
+}
+
+main {
+    padding: 10px;
+}
+
+header {
+    background-image: url(../images/vinyl_background_fade.jpg);
+    background-attachment: fixed;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    height: 400px;
+    font-family: 'Russo One', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 0px !important;
+    text-align: center;
+}
+
+header nav  ul {
+    list-style-type: none;
+}
+
+header nav li {
+    font-size: 1.5em;
+    display: inline;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+header nav li:hover {
+    cursor: pointer;
+    background-color: rgb(190, 0, 0);
+}
+
+header nav li:not(:first-child) {
+    margin-left: 30px;
+}
+
+.title {
+    text-align: center;
+}
+
+#review, #comments{
+    color: black;
+    text-align: center;
+    background-color: rgb(230,230,230);
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 5px 5px 5px rgb(180,180,180);
+}
+
+.poo {
+    background-color: rgb(210,210,210);
+    border-radius: 2px;
+}
+
+#comments {
+    margin-top: 20px;
+}
+
+#comments h4 {
+    margin-bottom: 10px;
+}
+
+#comments textarea {
+    background-color: white;
+    width: 90%;
+    color: rgb(100,100,100);
+    margin-bottom: 10px;
+}
+
+#comments input[type="submit"] {
+    background-color: rgb(180,0,0);
+}
+
+#comments input[type="submit"]:hover {
+    background-color: rgb(140,0,0);
+}
+
+#review hr {
+    margin-bottom: 10px;
+}
+
+/* release date, genre, website */
+
+#review-info {
+    border-radius: 2px;
+    padding: 10px;
+}
+
+.info-item {
+    padding: 5px;
+}
+
+.info-item p{
+    padding: 10px;
+    background-color: rgb(210,210,210);
+}
+
+.album-title {
+    font-style: italic;
+}
+
+.album-cover {
+    background-color: black;
+    width: 250px;
+    height: 250px;
+    margin: 10px auto;
+}
+
+#tracks {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgb(210,210,210);
+    border-radius: 2px;
+    text-align: left;
+    
+}

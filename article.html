@@ -6,18 +6,38 @@
         <meta name="viewport" content="width=400px, maximum-scale=1.0">
         <link rel="stylesheet" href="Qubit.css">
         <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="css/article.css">
         <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
     <body>
-        <header>
-            <nav>
+        <header class="row col-12">
+            <section class="title">
+                <h1>The Final on Vinyl</h1>
+            </section>
+            <nav class="row col-12">
+                <ul>
+                    <li>Home</li>
+                    <li>Reviews</li>
+                    <li>Contact</li>
+                    <li>Partners</li>
+                </ul>
             </nav>
         </header>
         <main>
             <section id="review">
-            
+                
             </section>
+            
+            <section id="comments">
+                <h4>Comments</h4>
+                <form>
+                    <textarea placeholder="Write your comment here..."></textarea>
+                    <input type="submit">
+                </form>
+            </section>
+            
         </main>
         <footer>
         
@@ -31,6 +51,10 @@
         const REV_WEBSITE = 5;
         const REV_CONTENT = 6;
         const REV_DATE = 7;
+        const REV_EMBED = 9;
+        const REV_IMAGE_PATH = 10;
+        const REV_TRACKS = 11;
+        // const REV_author
         
         
         var ajaxRequest;
@@ -42,13 +66,33 @@
         })
         
         ajaxRequest.done(function(json) {
+            //alert(json)
             var obj = JSON.parse(json);
             
-            $('#review').append("<h1>" + obj[0][1] + "</h1>");
-            $('#review').append("<h2>" + obj[0][2] + "</h2>");
-            $('#review').append("<h4>" + obj[0][REV_DATE] + "</h4>");
+            $('#review').append("<h1 class='poo'>" + obj[0][1] + "</h1>");
+            $('#review').append("<h2 class='poo'><em>" + obj[0][2] + "</em></h2>");
+            $('#review').append("<div class='album-cover'><img src='images/bonjovi_nj.jpg'></div>");
+            
+            // Album criteria
+            $('#review').append("<section id='review-info' class='row col-12'></section>");
+            $('#review-info').append("<div class='col-4 info-item'><p>Release Date: " + obj[0][REV_RELEASE_DATE] + "</p></div>")
+            $('#review-info').append("<div class='col-4 info-item'><p>Genre: " + obj[0][REV_GENRE] + "</p></div>")
+            $('#review-info').append("<div class='col-4 info-item'><p>Website: <a href='" + obj[0][REV_WEBSITE] + "'>" + obj[0][REV_WEBSITE] + "</a></p></div>")
+            
             $('#review').append("<hr>");
             $('#review').append("<p>" + obj[0][REV_CONTENT] + "</p>");
+            /*$('#review').append("<div class='tracks'><h4>Tracks:</h4><p> " + obj[0][REV_TRACKS] + "</p></div>");*/
+            
+            $('#review').append("<div id='tracks'></div>");
+            
+            $('#tracks').append("<h4>Tracks</h4>");
+            
+            // Split tracks into array
+            var tracksArray = obj[0][REV_TRACKS].split(", ");
+            
+            for(var i = 0; i < tracksArray.length; i++) {
+                $('#tracks').append("<p>" + (i+1) + ". " + tracksArray[i] + "</p>");
+            }
         });
         
         ajaxRequest.fail(function(response) {
