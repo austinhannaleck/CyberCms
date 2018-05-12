@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>The Final on Vinyl</title>
+        <meta name="viewport" content="width=400px, maximum-scale=1.0">
+        <link rel="stylesheet" href="Qubit.css">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="css/home.css">
+        <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <header class="row col-12">
+            <section class="title row col-12">
+                <h1>The Final on Vinyl</h1>
+            </section>
+            <nav class="row col-12">
+                <ul>
+                    <li>Home</li>
+                    <li><a href=article.html>Reviews</a></li>
+                    <li>Contact</li>
+                    <li>Partners</li>
+                </ul>
+            </nav>
+        </header>
+        <main class="row">
+            <section class="row" id="latest">
+                <div class="latest-header">
+                    <h2>Latest Review</h2>
+                </div>
+            </section>
+            
+        </main>
+        <footer class="row col-12">
+            <p>&copy; The Final on Vinyl 2018</p>
+        </footer>
+    </body>
+    <script>
+        const REV_ARTIST = 1;
+        const REV_TITLE  = 2;
+        const REV_GENRE  = 3;
+        const REV_RELEASE_DATE = 4;
+        const REV_WEBSITE = 5;
+        const REV_CONTENT = 6;
+        const REV_DATE = 7;
+        const REV_EMBED = 9;
+        const REV_IMAGE_PATH = 10;
+        const REV_TRACKS = 11;
+        // const REV_author
+        
+        
+        var ajaxRequest;
+        
+        ajaxRequest = $.ajax (
+        {
+            url: "scripts/get-latest.php",
+            type: "get"
+        })
+        
+        ajaxRequest.done(function(json) {
+            var obj = JSON.parse(json);
+            
+            // Album cover
+            $('#latest').append("<img class='album-cover' src='images/albums/" + obj.review_img_path + "'>");;
+            
+            // Review content
+            $('#latest').append("<div id='review-content' class='col-10'></div>");
+            
+            // Review header
+            $('#review-content').append("<div id='review-header'></div>")
+            $('#review-header').append("<h1 class='poo'>" + obj.review_artist + " - <span class='album-title'><em>" + obj.review_title + "</em></span></h1>");
+            
+            
+            // Album criteria
+            $('#review-header').append("<h4>Release Date: " + obj.review_released_date + "</h4>")
+            
+            $('#review-content').append("<p class='content'>" + obj.review_content + "</p>");
+        });
+        
+        ajaxRequest.fail(function(response) {
+            alert(response.responseText);
+        });
+    </script>
+</html>

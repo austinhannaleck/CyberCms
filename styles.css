@@ -7,7 +7,7 @@ body
 
 /* This class greys out the background to make the modal more apparent*/
 .modal{
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: space-around;
     position: fixed;

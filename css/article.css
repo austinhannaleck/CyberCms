@@ -6,6 +6,10 @@ main {
     padding: 10px;
 }
 
+main section {
+    margin: auto;
+}
+
 header {
     background-image: url(../images/vinyl_background_fade.jpg);
     background-attachment: fixed;
@@ -49,7 +53,6 @@ header nav li:not(:first-child) {
     text-align: center;
     background-color: rgb(230,230,230);
     width: 80%;
-    margin: 0 auto;
     padding: 20px;
     box-shadow: 5px 5px 5px rgb(180,180,180);
 }
@@ -61,6 +64,7 @@ header nav li:not(:first-child) {
 
 #comments {
     margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 #comments h4 {
@@ -76,6 +80,8 @@ header nav li:not(:first-child) {
 
 #comments input[type="submit"] {
     background-color: rgb(180,0,0);
+    border: 2px solid rgb(150,0,0);
+    border-radius: 5px;
 }
 
 #comments input[type="submit"]:hover {
@@ -120,4 +126,12 @@ header nav li:not(:first-child) {
     border-radius: 2px;
     text-align: left;
     
+}
+
+footer {
+    display: flex;
+    vertical-align: middle;
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(30,30,30);
 }

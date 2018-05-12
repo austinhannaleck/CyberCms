@@ -51,15 +51,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $content  = $_POST['content'];
     $rev_date = date('Y-m-d');
     $embed    = $_POST['embed'];
-    $img_path = $_POST['image_path'];
+    $img_path = $_FILES['file']['name'];
     $tracks   = $_POST['tracks'];
     
     if($stmt->execute() == false) {
-        die("Statement execution failed " . $stmt->error);
+        echo "Printing POST ";
+        print_r($_POST);
+        echo "Printing FILES ";
+        print_r($_FILES);
+        echo "Printing error ";
+        echo $FILES['file']['error'];
+        //die("Error submitting file. file name: " . $_FILES['file']['tmp_name'] . " post: " .  $_POST['file']);
+        //die("Statement execution failed " . $stmt->error);
     };
-    
+    //
     if($stmt->close())
     {
+        upload_image(); // this will currently fail locally, update configs.
         echo "Success!";
         exit();
     }
@@ -68,12 +76,32 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         die("Error inserting data into table");
     }
     $conn->close();
-
 }
 else
 {
     http_response_code(400);
     die("Failure to add user to database, please try again");
+}
+
+function upload_image()
+{
+    $file = $_FILES['file']['tmp_name'];
+    $name = $_FILES['file']['name'];
+
+
+
+    // upload file - use file name for 2nd parameter
+    if (move_uploaded_file($file, "/home/nc6h8f8eaaoj/public_html/images/albums/" . $_FILES['file']['name']))
+    {
+        echo "Successfully uploaded $name";
+    }
+    else
+    {
+    
+        debug_print_backtrace();
+        echo "Error uploading $name : " . print_r(error_get_last());
+        die();
+    }
 }
     
 ?>

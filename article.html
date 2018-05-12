@@ -12,20 +12,20 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
     <body>
-        <header class="row col-12">
+        <header class="row">
             <section class="title">
                 <h1>The Final on Vinyl</h1>
             </section>
             <nav class="row col-12">
                 <ul>
-                    <li>Home</li>
+                    <li><a href="index.html">Home</a></li>
                     <li>Reviews</li>
                     <li>Contact</li>
                     <li>Partners</li>
                 </ul>
             </nav>
         </header>
-        <main>
+        <main class="row">
             <section id="review">
                 
             </section>
@@ -40,7 +40,7 @@
             
         </main>
         <footer>
-        
+            <p>&copy; The Final on Vinyl 2018</p>
         </footer>
     </body>
     <script>
@@ -61,7 +61,7 @@
         
         ajaxRequest = $.ajax (
         {
-            url: "get-review.php",
+            url: "scripts/get-review.php",
             type: "get"
         })
         
@@ -71,7 +71,7 @@
             
             $('#review').append("<h1 class='poo'>" + obj[0][1] + "</h1>");
             $('#review').append("<h2 class='poo'><em>" + obj[0][2] + "</em></h2>");
-            $('#review').append("<div class='album-cover'><img src='images/bonjovi_nj.jpg'></div>");
+            $('#review').append("<img src='" + obj[0][10] + "'>");
             
             // Album criteria
             $('#review').append("<section id='review-info' class='row col-12'></section>");

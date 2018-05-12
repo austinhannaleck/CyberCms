@@ -1,6 +1,6 @@
 <?php
 
-$configs = include('config/configs.php');
+$configs = include('../config/configs.php');
 
 $dbServerName = $configs['host'];
 $dbUsername   = $configs['username'];
